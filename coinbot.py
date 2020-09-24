@@ -2,7 +2,11 @@ from twilio.rest import Client
 import json
 import requests
 import time
- 
+
+'''
+Por muito cringe que isto seja foi apenas uma simplificacao criada por mera necessidade, ate me diverti
+'''
+
 gbp_url = "https://api.coindesk.com/v1/bpi/currentprice/GBP.json"
 eur_url = "https://api.coindesk.com/v1/bpi/currentprice/EUR.json"
 accountSid = 'AC3eb64f569aa98aaf3b9d2e78160c2602'
@@ -25,7 +29,7 @@ def get_value(string):
     return float(aux)
     
 def send_msg(eur_gbp_value):
-    message = 'OLHA AI O PREÇO DA POUND CRL: %0.5f\n TROCA AI!!!' % (eur_gbp_value) 
+    message = 'OLHA AI O PREÇO DA POUND MPT: %0.5f\n TROCA AI!!!' % (eur_gbp_value) 
     print("Sending Text... %s\n" % message)
     myMessage = twilioClient.messages.create(body = message, from_=myNumber, to=destNumber)
     print("Text Sent %s - %s\n" % (myMessage.sid, myMessage.body))
