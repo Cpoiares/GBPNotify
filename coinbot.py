@@ -5,6 +5,7 @@ import time
 
 '''
 Por muito cringe que isto seja foi apenas uma simplificacao criada por mera necessidade, ate me diverti
+Numeros removidos contudo tem que ser friendly numbers da conta do twilio de forma a funcionar
 '''
 
 gbp_url = "https://api.coindesk.com/v1/bpi/currentprice/GBP.json"
@@ -13,8 +14,14 @@ accountSid = 'AC3eb64f569aa98aaf3b9d2e78160c2602'
 authToken = 'db2735f8b71f144e7f7eeecc4106de61'
 
 twilioClient = Client(accountSid, authToken)
-myNumber = '441668932047'
-destNumber = '447305665218'
+myNumber = '###'
+destNumber = '###'
+
+
+def get_value(string):
+    aux = string.split(',')
+    aux = aux[0] + aux[1]
+    return float(aux)
 
 def check_value(value):
     if(value < 1):
@@ -23,11 +30,6 @@ def check_value(value):
         return True
     return False
 
-def get_value(string):
-    aux = string.split(',')
-    aux = aux[0] + aux[1]
-    return float(aux)
-    
 def send_msg(eur_gbp_value):
     message = 'OLHA AI O PREÇO DA POUND MPT: %0.5f\n TROCA AI!!!' % (eur_gbp_value) 
     print("Sending Text... %s\n" % message)
